@@ -1,11 +1,20 @@
 "use client"
 
+import { useActionState } from "react"
 import { Button } from "./ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
 import { Input } from "./ui/input"
 import { Label } from "./ui/label"
 
 export default function LoginForm () {
+    const [state, formAction, pending] = useActionState<any, FormData>(
+        login,
+        {
+         success: null,
+         message: ""
+        }
+    )
+
     return (
         <Card className="mx-auto max-w-sm">
             <CardHeader>
