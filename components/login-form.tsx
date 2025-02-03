@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/
 import { Input } from "./ui/input"
 import { Label } from "./ui/label"
 import { login, LoginState } from "@/app/(auth)/login/actions"
-import { Alert } from "./ui/alert"
+import { Alert, AlertDescription, AlertTitle } from "./ui/alert"
 import { MessageCircle } from "lucide-react"
 
 export default function LoginForm () {
@@ -42,7 +42,11 @@ export default function LoginForm () {
 
                             {state.success === true && (
                                 <Alert className="text-muted-foreground">
-                                    <MessageCircle />
+                                    <MessageCircle className="h-4 w-4 !text-green-600" />
+                                    <AlertTitle className="text-gray-50">Email enviado!</AlertTitle>
+                                    <AlertDescription>
+                                        Confira seu inbox para acessar o link de login
+                                    </AlertDescription>
                                 </Alert>
                             )}
 
