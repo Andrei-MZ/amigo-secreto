@@ -9,6 +9,7 @@ import { login, LoginState } from "@/app/(auth)/login/actions"
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert"
 import { Loader, MessageCircle } from "lucide-react"
 
+
 export default function LoginForm() {
     const [state, formAction, pending] = useActionState<LoginState, FormData>(
         login,
@@ -17,6 +18,7 @@ export default function LoginForm() {
             message: "",
         }
     )
+    
 
     return (
         <Card className="mx-auto max-w-sm">
