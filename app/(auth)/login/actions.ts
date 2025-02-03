@@ -29,7 +29,7 @@ export async function login(previousState: LoginState, formData: FormData) {
   }
 
   return {
-    sucess: true,
+    success: true,
     message: "Email enviado!",
   }
 }
