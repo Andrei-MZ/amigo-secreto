@@ -45,7 +45,17 @@ export default function LoginForm () {
                                     <MessageCircle className="h-4 w-4 !text-green-600" />
                                     <AlertTitle className="text-gray-50">Email enviado!</AlertTitle>
                                     <AlertDescription>
-                                        Confira seu inbox para acessar o link de login
+                                        Confira seu inbox para acessar o link de login.
+                                    </AlertDescription>
+                                </Alert>
+                            )}
+
+                            {state.success === false && (
+                                <Alert className="text-muted-foreground">
+                                    <MessageCircle className="h-4 w-4 !text-red-600" />
+                                    <AlertTitle className="text-gray-50">Erro!</AlertTitle>
+                                    <AlertDescription>
+                                        Ocorreu um erro ao enviar o link de login. Por favor, entre em contato com o suporte!
                                     </AlertDescription>
                                 </Alert>
                             )}
