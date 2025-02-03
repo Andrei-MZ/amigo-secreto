@@ -5,13 +5,16 @@ import { Button } from "./ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
 import { Input } from "./ui/input"
 import { Label } from "./ui/label"
+import { login, LoginState } from "@/app/(auth)/login/actions"
+import { Alert } from "./ui/alert"
+import { MessageCircle } from "lucide-react"
 
 export default function LoginForm () {
-    const [state, formAction, pending] = useActionState<any, FormData>(
+    const [state, formAction, pending] = useActionState<LoginState, FormData>(
         login,
         {
          success: null,
-         message: ""
+         message: "",
         }
     )
 
@@ -24,7 +27,7 @@ export default function LoginForm () {
                 </CardDescription>
             </CardHeader>
                 <CardContent>
-                    <form action="">
+                    <form action="formAction">
                         <div className="grid gap-4">
                             <div className="grid gap-2">
                             <Label htmlFor="email">Email</Label>
@@ -36,6 +39,13 @@ export default function LoginForm () {
                             required 
                             />
                             </div>
+
+                            {state.success === true && (
+                                <Alert className="text-muted-foreground">
+                                    <MessageCircle />
+                                </Alert>
+                            )}
+
                             <Button type="submit" className="w-full">
                             Login
                             </Button>
