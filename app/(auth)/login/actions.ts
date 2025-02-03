@@ -16,7 +16,7 @@ export async function login(previousState: LoginState, formData: FormData) {
     email,
     options: {
         emailRedirectTo: `${process.env.NEXT_PUBLIC_URL}/auth/confirm`
-    }
+    },
   })
 
   if (error) {
@@ -25,7 +25,6 @@ export async function login(previousState: LoginState, formData: FormData) {
         success: false,
         message: error.message,
     }
-
   }
 
   return {
