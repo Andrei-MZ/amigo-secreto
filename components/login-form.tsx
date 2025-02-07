@@ -18,6 +18,7 @@ export default function LoginForm() {
             message: "",
         }
     )
+    console.log(state)
     
 
     return (
@@ -29,7 +30,7 @@ export default function LoginForm() {
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                <form action="formAction">
+                <form action={formAction}>
                     <div className="grid gap-4">
                         <div className="grid gap-2">
                             <Label htmlFor="email">Email</Label>
