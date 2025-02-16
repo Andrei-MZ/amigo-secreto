@@ -1,3 +1,5 @@
+"use server"
+
 import { createClient } from "@/utils/supabase/server";
 
 export type CreateGroupState = {
@@ -24,5 +26,5 @@ export async function createGroup(
     const email = formData.getAll("email")
     const groupName = formData.getAll("groupName")
 
-    
+    console.log(names, email, groupName)
 }

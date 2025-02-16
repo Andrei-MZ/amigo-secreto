@@ -7,7 +7,7 @@ import { Input } from "./ui/input";
 import { Loader, Mail, Trash2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
-import { CreateGroupState } from "@/app/app/grupos/novo/actions";
+import { createGroup, CreateGroupState } from "@/app/app/grupos/novo/actions";
 import { useToast } from "@/hooks/use-toast";
 
 interface Participant {
