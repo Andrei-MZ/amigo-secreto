@@ -24,7 +24,7 @@ export async function createGroup(
 
     const names = formData.getAll("name")
     const email = formData.getAll("email")
-    const groupName = formData.getAll("groupName")
+    const groupName = formData.getAll("group-name")
 
     console.log(names, email, groupName)
 }
