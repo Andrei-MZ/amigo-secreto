@@ -1,12 +1,14 @@
 'use client'
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
-import { useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
-import { Mail, Trash2 } from "lucide-react";
+import { Loader, Mail, Trash2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
+import { CreateGroupState } from "@/app/app/grupos/novo/actions";
+import { useToast } from "@/hooks/use-toast";
 
 interface Participant {
     name: string;
@@ -18,11 +20,19 @@ export default function NewGroupForm({ loggedUser,
 }: {
      loggedUser: { email: string; id: string }
 }) {
+    const { toast } = useToast()
     const [participants, setParticipants] = useState<Participant[]>([
         { name: "", email: loggedUser.email },
     ])
 
     const [groupName, setGroupName] = useState("")
+
+    const [state, formAction, pending] = useActionState<
+    CreateGroupState, 
+    FormData>(createGroup, {
+        success: null,
+        message: ""
+    })
 
     function updatedParticipante(
         index: number, 
@@ -42,13 +52,22 @@ export default function NewGroupForm({ loggedUser,
         setParticipants(participants.concat({ name: "", email: "" }))
     }
 
+    useEffect(() => {
+        if (state.success === false ) {
+            toast({
+                variant: "destructive",
+                description: "state.message",
+            })
+        }
+    } , [state])
+
     return (
         <Card className=" w-full max-w-2xl mx-auto">
             <CardHeader>
                 <CardTitle>Novo grupo</CardTitle>
                 <CardDescription>Convide seus amigos para participar</CardDescription>
             </CardHeader>
-            <form action={() => {}}>
+            <form action={formAction}>
                 <CardContent className="space-y-4">
                     <div className="space-y-2">
                         <Label htmlFor="group-name">Nome do grupo</Label>
@@ -128,6 +147,7 @@ export default function NewGroupForm({ loggedUser,
                     className="flex items-center sapce-x-2 w-full md:w-auto"
                     >
                         <Mail className="w-3 h-3" /> Criar grupo e enviar emails
+                        {pending && <Loader className="animate-spin" />}
                     </Button> 
                 </CardFooter>
             </form>
