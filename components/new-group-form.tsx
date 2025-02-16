@@ -4,6 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/
 import { useState } from "react";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
+import { Trash2 } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface Participant {
     name: string;
@@ -30,6 +32,11 @@ export default function NewGroupForm({ loggedUser,
         updatedParticipants[index][field] = value
         setParticipants(updatedParticipants)
     }
+
+    function removeParticipant(index: number) {
+        setParticipants(
+            participants.filter((_, i) => i !== index))
+    }   
 
     return (
         <Card className=" w-full max-w-2xl mx-auto">
@@ -62,8 +69,42 @@ export default function NewGroupForm({ loggedUser,
                                 value={participant.name} 
                                 onChange={(e) => {
                                     updatedParticipante(index, "name", e.target.value)
-                                }} />
+                                }}
+                                placeholder="Digite o nome da pessoa"
+                                required
+                                />
                             </div>
+
+                            <div className="flex-grow space-y-2 w-full">
+                                <Label htmlFor={`email-${index}`}>Email</Label>
+                                <Input id={`email-${index}`} 
+                                name="email" 
+                                type="email"
+                                value={participant.email} 
+                                onChange={(e) => {
+                                    updatedParticipante(index, "email", e.target.value)
+                                }}
+                                placeholder="Digite o email da pessoa"
+                                className="readonly:text-muted-foreground"
+                                readOnly={participant.email === loggedUser.email}
+                                required
+                                />
+                            </div>
+
+                                <div className="min-w-9">
+                                    {participants.length > 1 &&
+                                     participant.email !== loggedUser.email && (
+                                        <Button 
+                                        type="button" 
+                                        variant="outline" 
+                                        size="icon" 
+                                        onClick={() => removeParticipant(index)}
+                                        >
+                                            <Trash2 className="h-4 w-4 "/>
+                                        </Button>
+                                    )}
+                                </div>
+
                         </div>
                     ))}
                 </CardContent>
