@@ -1,3 +1,4 @@
+import NewGroupForm from "@/components/new-group-form"
 import { createClient } from "@/utils/supabase/server"
 
 export default async function NewGroupPage() {
