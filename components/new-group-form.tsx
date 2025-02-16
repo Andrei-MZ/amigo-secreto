@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { useState } from "react";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
-import { Trash2 } from "lucide-react";
+import { Mail, Trash2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 
@@ -35,9 +35,12 @@ export default function NewGroupForm({ loggedUser,
     }
 
     function removeParticipant(index: number) {
-        setParticipants(
-            participants.filter((_, i) => i !== index))
-    }   
+        setParticipants(participants.filter((_, i) => i !== index))
+    }
+    
+    function addParticipant() {
+        setParticipants(participants.concat({ name: "", email: "" }))
+    }
 
     return (
         <Card className=" w-full max-w-2xl mx-auto">
@@ -119,6 +122,13 @@ export default function NewGroupForm({ loggedUser,
                     >
                         Adicionar amigo
                     </Button>
+
+                    <Button
+                    type="submit"
+                    className="flex items-center sapce-x-2 w-full md:w-auto"
+                    >
+                        <Mail className="w-3 h-3" /> Criar grupo e enviar emails
+                    </Button> 
                 </CardFooter>
             </form>
         </Card>
