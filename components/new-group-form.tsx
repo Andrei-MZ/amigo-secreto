@@ -1,11 +1,12 @@
 'use client'
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { useState } from "react";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Trash2 } from "lucide-react";
 import { Button } from "./ui/button";
+import { Separator } from "./ui/separator";
 
 interface Participant {
     name: string;
@@ -108,8 +109,18 @@ export default function NewGroupForm({ loggedUser,
                         </div>
                     ))}
                 </CardContent>
+                <Separator className="my-4"/>
+                <CardFooter className="flex flex-col md:flex-row justify-between space-y-4 md:space-y-0">
+                    <Button
+                    type="button"
+                    variant="outline"
+                    onClick={addParticipant}
+                    className="w-full md:w-auto"
+                    >
+                        Adicionar amigo
+                    </Button>
+                </CardFooter>
             </form>
-
         </Card>
     )
 
