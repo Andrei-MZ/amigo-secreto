@@ -23,7 +23,7 @@ export async function createGroup(
   }
 
   const names = formData.getAll("name");
-  const email = formData.getAll("email");
+  const emails = formData.getAll("email");
   const groupName = formData.getAll("group-name");
 
   const { data: newGroup, error } = await supabase
@@ -42,5 +42,10 @@ export async function createGroup(
     };
   }
 
-  console.log(newGroup)
+  const participants = names.map((name, index) => ({
+    group_id: newGroup.id,
+    name,
+    email: emails[index]
+  }))
+
 }
