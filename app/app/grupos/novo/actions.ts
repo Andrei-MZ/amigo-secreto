@@ -53,4 +53,12 @@ export async function createGroup(
   .insert(participants)
   .select()
 
+  if (errorParticipants) {
+    return {
+      success: false,
+      message: 
+      "Ocorreu um erro ao adicionar os participantes ao grupo. Por favor tente novamente.",
+    };
+  }
+
 }
