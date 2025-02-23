@@ -48,4 +48,9 @@ export async function createGroup(
     email: emails[index]
   }))
 
+  const { data: createdParticipants, error: errorParticipants } = await supabase
+  .from("participants")
+  .insert(participants)
+  .select()
+
 }
