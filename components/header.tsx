@@ -8,7 +8,7 @@ export default function Header() {
             <div className="container mx-auto p-4">
                 <div className="flex justify-between items-center">
                     <Link href="/" className="text-2xl font-bold flex items-center gap-2">
-                        <Gift className="h-6 w-6 text-red-400" />
+                        <Gift className="h-6 w-6 text-green-400" />
                         <span>
                             Amigo
                             <span className="font-thin">Secreto</span>
