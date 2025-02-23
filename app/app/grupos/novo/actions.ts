@@ -17,7 +17,7 @@ export async function createGroup(
 
   if (authError) {
     return {
-      succeso: false,
+      success: false,
       message: "Ocorreu um erro ao criar o grupo",
     };
   }
@@ -61,4 +61,35 @@ export async function createGroup(
     };
   }
 
+  const drawnParticipants = drawGroup(createdParticipants)
+}
+
+type Participant = {
+    id: string;
+    group_id: string;
+    name: string;
+    email: string;
+    assigned_to: string | null;
+    created_at: string;
+}
+
+function drawGroup(participants: Participant[]) {
+  const selectedParticipants: string[] = [];
+
+  return participants.map((participant) => {
+    const availableParticipants = participants.filter(
+        (p) => p.id !== participant.id && !selectedParticipants.includes(participant.id)
+    )
+
+    const assignedParticipant = availableParticipants[
+        Math.floor(Math.random() * availableParticipants.length)
+    ]
+
+    selectedParticipants.push(assignedParticipant.id);
+
+    return {
+        ...participant,
+        assigned_to: assignedParticipant.id,
+    };
+  });
 }
