@@ -62,6 +62,18 @@ export async function createGroup(
   }
 
   const drawnParticipants = drawGroup(createdParticipants)
+
+  const {  error: errorDraw } = await supabase 
+  .from("participants") 
+  .upsert(drawnParticipants);
+
+  if (errorDraw) {
+    return {
+      success: false,
+      message: 
+      "Ocorreu um erro ao sortear os participantes do grupo. Por favor tente novamente.",
+    };
+  }
 }
 
 type Participant = {
