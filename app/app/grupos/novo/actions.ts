@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/utils/supabase/server";
+import { redirect } from "next/navigation";
 
 export type CreateGroupState = {
   success: null | boolean;
@@ -74,6 +75,7 @@ export async function createGroup(
       "Ocorreu um erro ao sortear os participantes do grupo. Por favor tente novamente.",
     };
   }
+  redirect(`app/grupos/${newGroup.id}`)
 }
 
 type Participant = {
