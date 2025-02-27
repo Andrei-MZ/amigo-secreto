@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { TextRevealCard, TextRevealCardTitle } from "@/components/ui/text-reveal"
 import { createClient } from "@/utils/supabase/server"
 
 export default async function GrupoIdPage({
@@ -23,21 +24,21 @@ export default async function GrupoIdPage({
         .eq("id", groupId)
         .single()
 
-        console.log("Grupo encontrado:", data);
-        console.log("Erro ao buscar grupo:", error)
+    console.log("Grupo encontrado:", data);
+    console.log("Erro ao buscar grupo:", error)
 
-        if (error) {
-            return <p>Erro ao carregar o grupo</p>
-        }
+    if (error) {
+        return <p>Erro ao carregar o grupo</p>
+    }
 
-        const assignedParticipantId = data.participants.find(
-            (p) => authUser?.user?.email == p.email
-        )?.assigned_to
+    const assignedParticipantId = data.participants.find(
+        (p) => authUser?.user?.email == p.email
+    )?.assigned_to
 
 
-        const assignedParticipant = data.participants.find(
-            (p) => p.id == assignedParticipantId
-        )
+    const assignedParticipant = data.participants.find(
+        (p) => p.id == assignedParticipantId
+    )
 
     return (
         <main className="container mx-auto py-6">
@@ -73,11 +74,19 @@ export default async function GrupoIdPage({
                             ))}
                         </TableBody>
                     </Table>
-                    <Separator className="my-6"/>
+                    <Separator className="my-6" />
 
-                 
+                    <TextRevealCard
+                        text="Passe o mouse para revelar"
+                        revealText={assignedParticipant?.name}
+                    >
+                        <TextRevealCardTitle>
+                            Seu amigo secreto.
+                        </TextRevealCardTitle>
+                    </TextRevealCard>
+
                 </CardContent>
             </Card>
-        </main>
+        </main >
     )
 }
