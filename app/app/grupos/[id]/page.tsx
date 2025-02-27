@@ -79,6 +79,7 @@ export default async function GrupoIdPage({
                     <TextRevealCard
                         text="Passe o mouse para revelar"
                         revealText={assignedParticipant?.name}
+                        className="w-full"
                     >
                         <TextRevealCardTitle>
                             Seu amigo secreto.
