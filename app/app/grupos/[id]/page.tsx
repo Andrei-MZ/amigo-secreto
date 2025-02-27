@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table"
+import { Separator } from "@/components/ui/separator"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { createClient } from "@/utils/supabase/server"
 
 export default async function GrupoIdPage({
@@ -59,8 +60,8 @@ export default async function GrupoIdPage({
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHeader>Nome</TableHeader>
-                                <TableHeader>Email</TableHeader>
+                                <TableHead>Nome</TableHead>
+                                <TableHead>Email</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -72,6 +73,9 @@ export default async function GrupoIdPage({
                             ))}
                         </TableBody>
                     </Table>
+                    <Separator className="my-6"/>
+
+                 
                 </CardContent>
             </Card>
         </main>
