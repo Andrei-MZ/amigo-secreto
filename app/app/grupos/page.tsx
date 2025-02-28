@@ -1,6 +1,8 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { createClient } from "@/utils/supabase/client";
+import { Calendar } from "lucide-react";
 import Link from "next/link";
 
 export default async function GruposPage() {
@@ -34,7 +36,20 @@ export default async function GruposPage() {
                             href={`/app/grupo/${group.id}`}
                             key={group.id}
                             className="cursor-pointer"
-                        ></Link>
+                        >
+                            <Card className="overflow-hidden">
+                                <CardHeader className="pb-2">
+                                    <CardTitle>{group.name}
+                                    </CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <div className="flex items-center text.sm text-muted-foreground mb-2">
+                                      <Calendar className="mr-2 h-4 w-4" />
+                                      {new Date(group.created_at).toLocaleDateString()}
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </Link>
                     ))}
                 </div>
             </ScrollArea>
