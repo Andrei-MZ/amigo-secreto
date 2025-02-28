@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/utils/supabase/server";
 import { Calendar } from "lucide-react";
 import Link from "next/link";
 
@@ -18,6 +18,8 @@ export default async function GruposPage() {
         participants!inner(email)
         `)
         .eq("participants.email", authUser?.user?.email)
+
+        console.log(data)
 
     if (error) {
         return <p>Erro ao carregar grupos</p>
