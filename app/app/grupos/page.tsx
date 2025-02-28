@@ -10,16 +10,20 @@ export default async function GruposPage() {
 
     const { data: authUser } = await supabase.auth.getUser()
 
-    const { data, error } = await supabase.from("groups").select(`
-        id,
-        name,
-        owner_id,
-        created_at,
+    const { data, error } = await supabase
+    .from("groups")
+    .select(
+        `
+        id, 
+        name, 
+        owner_id, 
+        created_at, 
         participants!inner(email)
         `)
         .eq("participants.email", authUser?.user?.email)
 
-        console.log(data)
+        console.log("Usuário autenticado:", authUser?.user);
+
 
     if (error) {
         return <p>Erro ao carregar grupos</p>
@@ -55,7 +59,6 @@ export default async function GruposPage() {
                     ))}
                 </div>
             </ScrollArea>
-
         </main>
     )
 }
