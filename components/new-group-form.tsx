@@ -59,6 +59,7 @@ export default function NewGroupForm({ loggedUser,
                 description: "state.message",
             })
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     } , [state])
 
     return (

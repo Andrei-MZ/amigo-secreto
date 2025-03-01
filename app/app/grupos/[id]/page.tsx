@@ -7,7 +7,7 @@ import { createClient } from "@/utils/supabase/server"
 export default async function GrupoIdPage({
     params,
 }: {
-    params: { id: string }
+    params: Promise <{ id: string }>
 }) {
     const supabase = await createClient()
     const { data: authUser } = await supabase.auth.getUser()

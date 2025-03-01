@@ -26,7 +26,7 @@ export async function createGroup(
 
   const names = formData.getAll("name");
   const emails = formData.getAll("email");
-  const groupName = formData.getAll("group-name");
+  const groupName = formData.get("group-name") as string;
 
   const { data: newGroup, error } = await supabase
     .from("groups")
