@@ -1,18 +1,20 @@
-import NewGroupForm from "@/components/new-group-form"
-import { createClient } from "@/utils/supabase/server"
+import NewGroupForm from "@/components/new-group-form";
+import { createClient } from "@/utils/supabase/server";
 
 export default async function NewGroupPage() {
-    const supabase = await createClient()
-    const { data } = await supabase.auth.getUser()
+  const supabase = await createClient();
+  const { data } = await supabase.auth.getUser();
 
-    const loggedUser = {
-        id: data?.user?.id as string,
-        email: data?.user?.email as string,
-    }
+  const loggedUser = {
+    id: data?.user?.id as string,
+    email: data?.user?.email as string,
+  };
 
-    return (
-        <div className="mt-40">
-            <NewGroupForm loggedUser={loggedUser} />
-        </div>
-    )
+  return (
+    <div className="min-h-screen flex items-center justify-center px-4">
+      <div className="w-full max-w-sm">
+        <NewGroupForm loggedUser={loggedUser} />
+      </div>
+    </div>
+  );
 }
