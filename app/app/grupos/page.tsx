@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
@@ -11,18 +12,16 @@ export default async function GruposPage() {
     const { data: authUser } = await supabase.auth.getUser()
 
     const { data, error } = await supabase
-    .from("groups")
-    .select(
-        `
-        id, 
-        name, 
-        owner_id, 
-        created_at, 
-        participants!inner(email)
-        `)
+        .from("groups")
+        .select(
+         `
+         id, 
+         name, 
+         owner_id, 
+         created_at, 
+         participants!inner(email)
+         `)
         .eq("participants.email", authUser?.user?.email)
-
-        console.log("Usuário autenticado:", authUser?.user);
 
 
     if (error) {
