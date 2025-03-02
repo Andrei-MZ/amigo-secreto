@@ -64,22 +64,31 @@ O projeto **Amigo Secreto** foi desenvolvido para aprimorar minhas habilidades e
 1️⃣ **Clone o repositório:**  
 ```bash
 git clone https://github.com/seu-usuario/amigo-secreto.git
-
+```
 2️⃣ Instale as dependências:
+```bash
 npm install
+```
 
 3️⃣ Configuração das variáveis de ambiente:
+```bash
 Crie um arquivo .env.local na raiz do projeto e adicione:
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
 RESEND_API_KEY=your_resend_api_key
+```
 
 4️⃣ Execute o projeto:
+```bash
 npm run dev
+```
 
 5️⃣ Acesse em:
+```bash
 http://localhost:3000 🚀
+```
+
 
 
 
