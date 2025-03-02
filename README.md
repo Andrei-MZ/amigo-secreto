@@ -1,6 +1,6 @@
 # 🎁 Amigo Secreto  
 
-**Amigo Secreto** é um projeto desenvolvido com **Next.js, Node.js, JavaScript, TypeScript e Tailwind CSS** para facilitar a organização de sorteios de amigo secreto. Ele permite criar grupos, adicionar participantes e realizar o sorteio de forma automática, além de enviar os resultados por e-mail.  
+O projeto **Amigo Secreto** foi desenvolvido para aprimorar minhas habilidades em Next.js, gerenciamento de estado e manipulação de dados. Além disso, explorei técnicas de responsividade, autenticação e banco de dados para um sistema funcional e intuitivo.  
 
 ## 🚀 Tecnologias Utilizadas  
 
@@ -48,6 +48,11 @@
 ✔ Configuração e integração no Next.js  
 ✔ Envio automático de e-mails com os resultados do sorteio  
 
+![Tela Inicial](public/tela-inicial.PNG)
+![Tela Login](public/tela-login.PNG)
+![Criação de Grupo](public/tela-criacao-grupos.PNG)
+![Meus Grupos](public/tela-meus-grupos.PNG)
+
 ---
 
 ## ⚙️ Como Rodar o Projeto  
@@ -72,9 +77,6 @@ npm run dev
 5️⃣ Acesse em:
 http://localhost:3000 🚀
 
-![Tela Inicial](public/tela-inicial.PNG)
-![Tela Login](public/tela-login.PNG)
-![Criação de Grupo](public/tela-criacao-grupos.PNG)
-![Meus Grupos](public/tela-meus-grupos.PNG)
+
 
 
