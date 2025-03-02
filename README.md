@@ -48,9 +48,13 @@ O projeto **Amigo Secreto** foi desenvolvido para aprimorar minhas habilidades e
 ✔ Configuração e integração no Next.js  
 ✔ Envio automático de e-mails com os resultados do sorteio  
 
+**Tela Inicial**
 ![Tela Inicial](public/tela-inicial.PNG)
+**Tela Login**
 ![Tela Login](public/tela-login.PNG)
+**Cração de Grupos**
 ![Criação de Grupo](public/tela-criacao-grupos.PNG)
+**Grupos que participo**
 ![Meus Grupos](public/tela-meus-grupos.PNG)
 
 ---
